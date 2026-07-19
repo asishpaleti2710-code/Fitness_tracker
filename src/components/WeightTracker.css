@@ -1,0 +1,157 @@
+.weight-tracker {
+    width: 100%;
+}
+
+.wt-form {
+    display: flex;
+    gap: 10px;
+}
+
+.wt-input-wrapper {
+    position: relative;
+    flex: 1;
+}
+
+.wt-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+.wt-input {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    background-color: var(--bg-input);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-sm);
+    color: var(--text-main);
+    outline: none;
+    font-size: 1rem;
+    transition: border-color var(--transition-medium);
+}
+
+.wt-input:focus {
+    border-color: var(--color-primary);
+}
+
+.wt-button {
+    padding: 0 24px;
+    background-color: var(--color-primary);
+    color: white;
+    border-radius: var(--radius-sm);
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.wt-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.wt-button:not(:disabled):hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.wt-button:not(:disabled):active {
+    transform: translateY(1px);
+}
+
+.wt-trend {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    background-color: var(--bg-background);
+    /* fallback if var not exist, but let's use --bg-dark or transparent */
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: var(--radius-sm);
+}
+
+.wt-trend-label {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.wt-trend-value {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: bold;
+}
+
+.wt-history {
+    margin-top: var(--space-md);
+}
+
+.wt-history-title {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    color: var(--text-highlight);
+}
+
+.wt-empty {
+    color: var(--text-muted);
+    text-align: center;
+    padding: 20px;
+}
+
+.wt-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.wt-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background-color: var(--bg-card);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--bg-input);
+    transition: border-color var(--transition-medium);
+}
+
+.wt-item:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.wt-weight-text {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--text-main);
+    display: block;
+}
+
+.wt-date-text {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.wt-delete-btn {
+    color: var(--text-muted);
+    opacity: 0.5;
+    cursor: pointer;
+    padding: 8px;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+}
+
+.wt-delete-btn:hover {
+    opacity: 1;
+    background-color: rgba(255, 0, 0, 0.1);
+    color: var(--color-danger);
+}

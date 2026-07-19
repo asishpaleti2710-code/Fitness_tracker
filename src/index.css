@@ -1,0 +1,279 @@
+:root {
+  /* Dark & Blue Theme */
+  --primary-hue: 220;
+  /* Blue */
+  --secondary-hue: 190;
+  /* Cyan */
+  --accent-hue: 260;
+  /* Indigo */
+
+  /* Electric Blue Primary */
+  --color-primary: #3B82F6;
+  --color-primary-dark: #1D4ED8;
+  --color-primary-light: #60A5FA;
+
+  /* Cyan Secondary */
+  --color-secondary: #06B6D4;
+  --color-secondary-light: #22D3EE;
+
+  /* Indigo Accent */
+  --color-accent: #6366F1;
+  --color-accent-dark: #4F46E5;
+
+  --color-success: hsl(150, 80%, 40%);
+  --color-danger: hsl(0, 80%, 60%);
+
+  /* Black & Blue Gradient Backgrounds */
+  --bg-dark: #000000;
+  /* Pure Black Fallback */
+  --bg-main: linear-gradient(135deg, #000000 0%, #020617 50%, #0f172a 100%);
+  --bg-card: rgba(15, 23, 42, 0.6);
+  /* Glassy Blue-Black */
+  --bg-card-hover: rgba(30, 41, 59, 0.8);
+  --bg-input: rgba(2, 6, 23, 0.8);
+
+  /* Text */
+  --text-main: #F1F5F9;
+  /* Slate 100 */
+  --text-muted: #94A3B8;
+  /* Slate 400 */
+  --text-highlight: #FFFFFF;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+
+  /* Borders & Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.3s ease;
+}
+
+[data-theme='light'] {
+  /* Light Mode Overrides */
+  --bg-dark: hsl(240, 20%, 97%);
+  --bg-card: hsl(0, 0%, 100%);
+  --bg-card-hover: hsl(240, 10%, 95%);
+  --bg-input: hsl(240, 10%, 92%);
+
+  --text-main: hsl(240, 10%, 20%);
+  --text-muted: hsl(240, 5%, 45%);
+  --text-highlight: hsl(240, 10%, 10%);
+
+  /* Adjust primary for better contrast on white if needed, 
+     but 60% lightness usually works well on both. */
+  --color-primary: hsl(var(--primary-hue), 70%, 55%);
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: var(--bg-main);
+  background-attachment: fixed;
+  /* Ensures gradient stays while scrolling */
+  min-height: 100vh;
+  color: var(--text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+  margin-bottom: var(--space-md);
+  color: var(--text-highlight);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.page-transition {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* --- Dragon Ball Effects --- */
+
+@keyframes superSaiyanPulse {
+  0% {
+    box-shadow: 0 0 10px var(--color-accent), 0 0 20px var(--color-primary);
+  }
+
+  50% {
+    box-shadow: 0 0 20px var(--color-accent), 0 0 40px var(--color-primary), 0 0 60px var(--color-accent);
+  }
+
+  100% {
+    box-shadow: 0 0 10px var(--color-accent), 0 0 20px var(--color-primary);
+  }
+}
+
+.saiyan-aura {
+  animation: superSaiyanPulse 2s infinite ease-in-out;
+  border: 4px solid var(--color-accent) !important;
+}
+
+/* Scouter Overlay */
+.scouter-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.scouter-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 255, 0, 0.1);
+  /* Green tint */
+  z-index: 10;
+  pointer-events: none;
+  border: 2px solid rgba(0, 255, 0, 0.5);
+}
+
+.scouter-overlay::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: rgba(0, 255, 0, 0.5);
+  z-index: 11;
+  pointer-events: none;
+  animation: scanLine 2s linear infinite;
+  box-shadow: 0 0 10px #0f0;
+}
+
+@keyframes scanLine {
+  0% {
+    top: 10%;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 90%;
+    opacity: 0;
+  }
+}
+
+/* Scouter Reticle */
+.scouter-reticle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 50%;
+  border: 2px solid rgba(0, 255, 0, 0.7);
+  border-radius: 50%;
+  z-index: 12;
+  pointer-events: none;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+}
+
+.scouter-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-family: 'Courier New', Courier, monospace;
+  color: #0f0;
+  font-weight: bold;
+  text-shadow: 0 0 5px #0f0;
+  z-index: 13;
+  font-size: 1.2rem;
+}
+
+/* Barcode Scanner Active Layout for WebView Transparency */
+/* Barcode Scanner Active Layout for WebView Transparency */
+html.barcode-scanner-active,
+body.barcode-scanner-active {
+  background: transparent !important;
+  visibility: hidden;
+}
+
+html.barcode-scanner-active #root,
+body.barcode-scanner-active #root,
+html.barcode-scanner-active .app-container,
+body.barcode-scanner-active .app-container {
+  background: transparent !important;
+}
+
+html.barcode-scanner-active .bottom-nav,
+body.barcode-scanner-active .bottom-nav,
+html.barcode-scanner-active .main-content,
+body.barcode-scanner-active .main-content,
+html.barcode-scanner-active .chatbot-fab,
+body.barcode-scanner-active .chatbot-fab,
+html.barcode-scanner-active .kakarot-bubble,
+body.barcode-scanner-active .kakarot-bubble,
+html.barcode-scanner-active .chatbot-window,
+body.barcode-scanner-active .chatbot-window {
+  display: none !important;
+}
+
+html.barcode-scanner-active .scouter-modal-container,
+body.barcode-scanner-active .scouter-modal-container {
+  visibility: visible !important;
+  background: transparent !important;
+}
